@@ -1,9 +1,6 @@
 from django.shortcuts import render
+from .models import Wine
 
-wines = [
-    {'name': 'red', 'color': 'red', 'description': 'dry', 'age': 5},
-    {'name': 'red', 'color': 'red', 'description': 'dry', 'age': 5},
-]
 
 
 
@@ -27,6 +24,13 @@ def about(request):
   return render(request, 'about.html')
 
 def wines_index(request):
+  wines = Wine.objects.all()
   return render(request, 'wines/index.html', {
     'wines': wines
   })
+
+def wines_detail(request, wine_id):
+  wine= Wine.objects.get(id=wine_id)
+  return render(request, 'wines/detail.html', { 
+    'wine': wine 
+    })

@@ -1,16 +1,8 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 <h1>Wine lists</h1>
 
-{% for wine in wines %}
-<!-- i dont understand wine in wines 
-why is it not wine in wine 
-
-nvm wine is the model name and 
-wines is the folder template name
--->
-<a href="{% url 'detail' wine.id %}">
 
   <div class="card">
     <div class="card-content">
@@ -25,5 +17,6 @@ wines is the folder template name
       {% endif %}
     </div>
   </div>
-{% endfor %}
+
+
 {% endblock %}
