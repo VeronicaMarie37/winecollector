@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Wine lists</h1>
+
+{% for wine in wines %}
+<!-- i dont understand wine in wines 
+why is it not wine in wine 
+
+nvm wine is the model name and 
+wines is the folder template name
+-->
+
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ wine.name }}</span>
+      <p>Color: {{ wine.color }}</p>
+      <p>Origin: {{ wine.origin }}</p>
+      <p>Description: {{ wine.description }}</p>
+      {% if wine.age > 0 %}
+        <p>Age: {{ wine.age }}</p>
+      {% else %}
+        <p>Age: Kitten</p>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}
