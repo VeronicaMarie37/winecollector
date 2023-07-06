@@ -1,18 +1,6 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Wine
-
-
-
-
-# class Wine(models.Model):
-#     name = models.CharField(max_length=100)
-#     color = models.CharField(max_length=100)
-#     origin = models.CharField(max_length=100)
-#     description = models.TextField(max_length=250)
-#     age = models.IntegerField()
-
-
-
 
 
 # Define the home view
@@ -34,3 +22,21 @@ def wines_detail(request, wine_id):
   return render(request, 'wines/detail.html', { 
     'wine': wine 
     })
+
+class WineCreate(CreateView):
+  model = Wine
+  fields = '__all__'
+   # Special string pattern Django will use
+  # success_url = '/wines/{wine_id}' # <--- must specify an exact ID
+  # # Or..more fitting... you want to just redirect to the index page
+  # # success_url = '/wines'
+
+
+class WineUpdate(UpdateView):
+    model = Wine
+  # Let's disallow the renaming of a cat by excluding the name field!
+    fields = ['color', 'origin','description', 'age']
+
+class WineDelete(DeleteView):
+  model = Wine
+  success_url = '/wines'

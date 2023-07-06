@@ -16,6 +16,12 @@
         <p>Age: light</p>
       {% endif %}
     </div>
+     <!-- Add the following markup -->
+  <div class="card-action">
+    <a href="{% url 'wines_update' wine.id %}">Edit</a>
+    <a href="{% url 'wines_delete' wine.id %}">Delete</a>
+  </div>
+  <!-- New markup above -->
   </div>
 
 

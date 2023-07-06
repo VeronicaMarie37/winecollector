@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Wine(models.Model):
@@ -9,5 +10,11 @@ class Wine(models.Model):
     age = models.IntegerField()
 
 
-def __str__(self):
-    return self.name
+
+    def __str__(self):
+        return self.name
+
+
+# Add this method
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'wine_id': self.id})
